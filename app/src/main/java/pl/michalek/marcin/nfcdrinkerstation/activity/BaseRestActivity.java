@@ -14,7 +14,7 @@ import com.octo.android.robospice.SpiceManager;
  *
  * @author Marcin Michałek
  */
-public class BaseRestActivity extends Activity {
+public class BaseRestActivity extends BaseActivity {
   public SpiceManager getSpiceManager() {
     return spiceManager;
   }

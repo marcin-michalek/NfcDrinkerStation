@@ -15,16 +15,16 @@ import pl.michalek.marcin.nfcdrinkerstation.network.model.Drinker;
  *
  * @author Marcin Michałek
  */
-public class SaveDrinkerRequest extends SpringAndroidSpiceRequest<String> {
+public class SaveDrinkerRequest extends SpringAndroidSpiceRequest<Boolean> {
   private Drinker drinker;
 
   public SaveDrinkerRequest(Drinker drinker) {
-    super(String.class);
+    super(Boolean.class);
     this.drinker = drinker;
   }
 
   @Override
-  public String loadDataFromNetwork() throws Exception {
-    return getRestTemplate().postForObject(ServicePaths.REST_ENDPOINT + "drink", drinker, String.class);
+  public Boolean loadDataFromNetwork() throws Exception {
+    return getRestTemplate().postForObject(ServicePaths.REST_ENDPOINT + "drink", drinker, Boolean.class);
   }
 }

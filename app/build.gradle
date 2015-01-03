@@ -37,4 +37,5 @@ dependencies {
   compile 'com.octo.android.robospice:robospice:1.4.14'
   compile 'com.octo.android.robospice:robospice-spring-android:1.4.14'
   compile 'com.google.code.gson:gson:2.3'
+  compile 'com.jakewharton:butterknife:6.0.0'
 }
