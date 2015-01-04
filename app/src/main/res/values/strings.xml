@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">NfcDrinkerStation</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="scan_a_tag">Welcome, scan a tag!</string>
+    <string name="cheers">Cheers, </string>
+    <string name="welcome_logo">Welcome Logo</string>
 
 </resources>
