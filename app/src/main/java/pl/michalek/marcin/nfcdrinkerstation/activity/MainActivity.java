@@ -2,7 +2,6 @@ package pl.michalek.marcin.nfcdrinkerstation.activity;
 
 import android.media.MediaPlayer;
 import android.nfc.NdefMessage;
-import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.widget.TextView;
@@ -14,10 +13,13 @@ import pl.michalek.marcin.nfcdrinkerstation.network.BaseNonContextRequestListene
 import pl.michalek.marcin.nfcdrinkerstation.network.model.Drinker;
 import pl.michalek.marcin.nfcdrinkerstation.network.request.SaveDrinkerRequest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends BaseRestActivity {
-  @InjectView(R.id.welcomeText)
-  TextView welcomeText;
+  @InjectView(R.id.drinkTextView)
+  TextView welcomeTextView;
 
   MediaPlayer mediaPlayer;
 
@@ -31,22 +33,21 @@ public class MainActivity extends BaseRestActivity {
 
   @Override
   protected void onStop() {
-    mediaPlayer.release();
-    mediaPlayer = null;
+    if (mediaPlayer != null) {
+      mediaPlayer.release();
+      mediaPlayer = null;
+    }
+
     super.onStop();
   }
 
   public void onResume() {
     super.onResume();
-    NdefMessage[] msgs;
-
-    if (isIntentActionNDEFDiscovored()) {
-      Parcelable[] rawMsgs = getIntent().getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
-      if (rawMsgs != null) {
-        msgs = new NdefMessage[rawMsgs.length];
-        for (int i = 0; i < rawMsgs.length; i++) {
-          msgs[i] = (NdefMessage) rawMsgs[i];
-          logDrinker(new Gson().fromJson(new String(msgs[i].getRecords()[0].getPayload()), Drinker.class));
+    if (isIntentActionNDEFDiscovered()) {
+      List<Parcelable> rawMessagesList = getExtraNDEFMessages();
+      if (!rawMessagesList.isEmpty()) {
+        for (Parcelable message : rawMessagesList) {
+          logDrinker(new Gson().fromJson(new String(((NdefMessage) message).getRecords()[0].getPayload()), Drinker.class));
         }
       }
     }
@@ -58,7 +59,11 @@ public class MainActivity extends BaseRestActivity {
   }
 
   private void displayWelcomeMessage(Drinker drinker) {
-    welcomeText.setText("Bravo " + drinker.getName());
+    welcomeTextView.setText(getString(R.string.cheers) + drinker.getName());
+  }
+
+  private void displayWelcomeMessage() {
+    welcomeTextView.setText(getString(R.string.scan_a_tag));
   }
 
   private void saveOnServer(Drinker drinker) {
@@ -67,6 +72,7 @@ public class MainActivity extends BaseRestActivity {
       public void onRequestSuccess(Boolean success) {
         if (success) {
           playWinSound();
+          displayWelcomeMessage();
         }
       }
     });
