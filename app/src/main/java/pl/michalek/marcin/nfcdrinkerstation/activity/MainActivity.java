@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.nfc.NdefMessage;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.speech.tts.TextToSpeech;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -13,11 +14,11 @@ import pl.michalek.marcin.nfcdrinkerstation.network.BaseNonContextRequestListene
 import pl.michalek.marcin.nfcdrinkerstation.network.model.Drinker;
 import pl.michalek.marcin.nfcdrinkerstation.network.request.SaveDrinkerRequest;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
-public class MainActivity extends BaseRestActivity {
+public class MainActivity extends BaseTextToSpeechActivity {
   @InjectView(R.id.drinkTextView)
   TextView welcomeTextView;
 
@@ -37,7 +38,6 @@ public class MainActivity extends BaseRestActivity {
       mediaPlayer.release();
       mediaPlayer = null;
     }
-
     super.onStop();
   }
 
@@ -55,7 +55,12 @@ public class MainActivity extends BaseRestActivity {
 
   private void logDrinker(Drinker drinker) {
     displayWelcomeMessage(drinker);
+    sayGreetings(drinker);
     saveOnServer(drinker);
+  }
+
+  private void sayGreetings(Drinker drinker) {
+    speak("Na zdrowie " + drinker.getName());
   }
 
   private void displayWelcomeMessage(Drinker drinker) {

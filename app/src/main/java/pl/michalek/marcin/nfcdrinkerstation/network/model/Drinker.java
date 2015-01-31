@@ -20,6 +20,7 @@ public class Drinker implements Serializable{
   private String gender;
   private String alcoholKind;
   private double alcoholVoltage;
+  private double shotCapacity;
 
   public String getName() {
     return name;
@@ -83,5 +84,13 @@ public class Drinker implements Serializable{
 
   public void setAlcoholVoltage(double alcoholVoltage) {
     this.alcoholVoltage = alcoholVoltage;
+  }
+
+  public double getShotCapacity() {
+    return shotCapacity;
+  }
+
+  public void setShotCapacity(double shotCapacity) {
+    this.shotCapacity = shotCapacity;
   }
 }

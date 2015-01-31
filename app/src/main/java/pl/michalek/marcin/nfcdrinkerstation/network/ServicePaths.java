@@ -10,5 +10,5 @@ package pl.michalek.marcin.nfcdrinkerstation.network;
  * @author Marcin Michałek
  */
 public final class ServicePaths {
-  public static final String REST_ENDPOINT = "http://192.168.2.110:8080/";
+  public static final String REST_ENDPOINT = "http://192.168.2.100:8080/";
 }
