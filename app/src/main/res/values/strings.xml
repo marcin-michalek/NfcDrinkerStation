@@ -2,9 +2,26 @@
 <resources>
 
     <string name="app_name">NfcDrinkerStation</string>
-
     <string name="scan_a_tag">Welcome, scan a tag!</string>
-    <string name="cheers">Cheers, </string>
+    <string name="cheers">Cheers,</string>
     <string name="welcome_logo">Welcome Logo</string>
 
+    <string-array name="toasts">
+        <item>Na zdrowie, #</item>
+        <item>Rach ciach ciach, babkę w piach. Pije: #</item>
+        <item>Umcia umcia, pękła gumcia. Pije: #</item>
+        <item>Za bezpieczny weekend, #</item>
+        <item>#! Na pochybel skurwysynom!</item>
+        <item>Rybka lubi pływać, #</item>
+        <item>A teraz pije, #</item>
+        <item>#! Pijesz!</item>
+        <item>Twoja kolej - #</item>
+        <item># pije i idzie po nową flaszkę do sklepu.</item>
+        <item># pije i idzie po nową flaszkę do sklepu.</item>
+        <item>Chluśniem, bo uśniem, #</item>
+        <item>Pierdykniem, bo odwykniem , #</item>
+        <item># nie kaktus, pić musi</item>
+        <item>#, szybko – bo się ściemnia!</item>
+        <item>#, a zdrowie, bo na rozum już za późno!”</item>
+    </string-array>
 </resources>

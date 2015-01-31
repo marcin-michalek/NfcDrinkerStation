@@ -14,14 +14,17 @@ import pl.michalek.marcin.nfcdrinkerstation.network.BaseNonContextRequestListene
 import pl.michalek.marcin.nfcdrinkerstation.network.model.Drinker;
 import pl.michalek.marcin.nfcdrinkerstation.network.request.SaveDrinkerRequest;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class MainActivity extends BaseTextToSpeechActivity {
   @InjectView(R.id.drinkTextView)
   TextView welcomeTextView;
 
+  Random random = new Random();
   MediaPlayer mediaPlayer;
 
   @Override
@@ -60,8 +63,14 @@ public class MainActivity extends BaseTextToSpeechActivity {
   }
 
   private void sayGreetings(Drinker drinker) {
-    speak("Na zdrowie " + drinker.getName());
+    speak(getRandomToast().replace("#", drinker.getName()));
   }
+
+  private String getRandomToast(){
+    String[] toasts = getResources().getStringArray(R.array.toasts);
+    return toasts[((int) Math.ceil(random.nextDouble()*(toasts.length-1)))];
+  }
+
 
   private void displayWelcomeMessage(Drinker drinker) {
     welcomeTextView.setText(getString(R.string.cheers) + drinker.getName());
