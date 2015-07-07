@@ -7,7 +7,6 @@ package pl.michalek.marcin.nfcdrinkerstation.network.model;
 import java.io.Serializable;
 
 /**
- * TODO Add class description...
  *
  * @author Marcin Michałek
  */

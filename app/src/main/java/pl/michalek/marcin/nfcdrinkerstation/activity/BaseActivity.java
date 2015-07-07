@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * TODO Add class description...
  *
  * @author Marcin Michałek
  */

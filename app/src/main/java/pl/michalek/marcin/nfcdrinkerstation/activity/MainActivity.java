@@ -4,7 +4,6 @@ import android.media.MediaPlayer;
 import android.nfc.NdefMessage;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.speech.tts.TextToSpeech;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -14,9 +13,7 @@ import pl.michalek.marcin.nfcdrinkerstation.network.BaseNonContextRequestListene
 import pl.michalek.marcin.nfcdrinkerstation.network.model.Drinker;
 import pl.michalek.marcin.nfcdrinkerstation.network.request.SaveDrinkerRequest;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 
@@ -24,8 +21,8 @@ public class MainActivity extends BaseTextToSpeechActivity {
   @InjectView(R.id.drinkTextView)
   TextView welcomeTextView;
 
-  Random random = new Random();
-  MediaPlayer mediaPlayer;
+  private Random random = new Random();
+  private MediaPlayer mediaPlayer;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

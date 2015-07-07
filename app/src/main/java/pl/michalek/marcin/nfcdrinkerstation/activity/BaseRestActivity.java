@@ -4,13 +4,11 @@
  */
 package pl.michalek.marcin.nfcdrinkerstation.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import com.octo.android.robospice.GsonSpringAndroidSpiceService;
 import com.octo.android.robospice.SpiceManager;
 
 /**
- * TODO Add class description...
  *
  * @author Marcin Michałek
  */

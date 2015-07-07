@@ -5,7 +5,6 @@
 package pl.michalek.marcin.nfcdrinkerstation.config;
 
 /**
- * TODO Add class description...
  *
  * @author Marcin Michałek
  */

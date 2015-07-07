@@ -4,14 +4,11 @@
  */
 package pl.michalek.marcin.nfcdrinkerstation.network.request;
 
-import android.util.Log;
-import com.google.gson.Gson;
 import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceRequest;
 import pl.michalek.marcin.nfcdrinkerstation.network.ServicePaths;
 import pl.michalek.marcin.nfcdrinkerstation.network.model.Drinker;
 
 /**
- * TODO Add class description...
  *
  * @author Marcin Michałek
  */

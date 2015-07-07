@@ -1,6 +1,5 @@
 /**
  * Created by Marcin Michałek on 2015-01-31.
- *
  */
 package pl.michalek.marcin.nfcdrinkerstation.activity;
 
@@ -13,11 +12,11 @@ import java.util.HashMap;
 import java.util.Locale;
 
 /**
- * TODO Add class description...
  *
  * @author Marcin Michałek
  */
 public class BaseTextToSpeechActivity extends BaseRestActivity implements TextToSpeech.OnInitListener {
+  public static final int CHECK_TTS_DATA_REQUEST_CODE = 5000;
 
   protected TextToSpeech textToSpeech;
   protected boolean textToSpeechReady;
@@ -30,22 +29,24 @@ public class BaseTextToSpeechActivity extends BaseRestActivity implements TextTo
   }
 
   private void checkIfTextToSpeechInstalled() {
-    Intent check = new Intent();
-    check.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-    startActivityForResult(check, 5006);
+    Intent checkTtsData = new Intent();
+    checkTtsData.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+    startActivityForResult(checkTtsData, CHECK_TTS_DATA_REQUEST_CODE);
   }
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == 5006) {
-      if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
-
-      } else {
+    if (requestCode == CHECK_TTS_DATA_REQUEST_CODE) {
+      if (!voiceDataCheckPass(resultCode)) {
         Intent install = new Intent();
         install.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
         startActivity(install);
       }
     }
+  }
+
+  private boolean voiceDataCheckPass(int resultCode) {
+    return resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS;
   }
 
   @Override
@@ -74,7 +75,6 @@ public class BaseTextToSpeechActivity extends BaseRestActivity implements TextTo
       textToSpeech.shutdown();
       textToSpeech = null;
     }
-
     super.onStop();
   }
 }
